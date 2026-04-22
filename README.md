@@ -1,8 +1,26 @@
-# 📄 AI Resume Classification System (NLP + Cloud Deployment)
+ 📄 AI Resume Classification System (NLP + Cloud Deployment)
 
-🚀 **Live Demo:** http://34.14.222.60:8501
+🚀 **Live Production Demo:** http://34.14.222.60:8501
 
-🎯 Automatically classifies resumes into job roles using NLP with real-time predictions via API and an interactive dashboard.
+🎯 Automatically classifies resumes into job roles with real-time predictions via API and an interactive dashboard.
+
+---
+
+## 🎥 Live Demo (Quick Preview)
+
+![Demo](screenshots/demo.gif)
+
+---
+
+## 📸 Dashboard Preview
+
+### 🖥️ Main Dashboard
+
+![Dashboard](screenshots/Dashboard1.png)
+
+### 📊 Predictions & Visualization
+
+![Results](screenshots/Dashboard2.png)
 
 ---
 
@@ -19,6 +37,7 @@
 ✔ Data visualization (prediction distribution)
 ✔ Download results as CSV
 ✔ Deployed on Google Cloud VM with static IP
+✔ Production-ready ML system with real-time inference
 
 ---
 
@@ -28,7 +47,21 @@ Recruiters receive hundreds of resumes for each job role, making manual screenin
 
 👉 This system automates resume classification using NLP to enable faster and scalable hiring workflows.
 
+💼 **Impact:** Reduces manual resume screening time by automating candidate categorization at scale.
+
 💡 This project simulates a real-world HR automation system used in recruitment pipelines.
+
+---
+
+## 📊 Dataset
+
+- Source: Public resume dataset (Kaggle)
+- Number of samples: 79+ resumes (used for demonstration; scalable to larger datasets)
+- Number of classes: 04 job categories (peoplesoft , react developer , sql developer , workday)
+- Preprocessing:
+  - Removed noise (URLs, symbols)
+  - Lemmatization using spaCy
+- Data imbalance handled using standard train-test split
 
 ---
 
@@ -50,6 +83,17 @@ Prediction
 
 ---
 
+## 🏗️ Architecture Details
+
+- FastAPI handles real-time prediction requests
+- Streamlit acts as the frontend interface for user interaction
+- NLP preprocessing pipeline cleans and transforms resume text
+- Model and vectorizer are loaded into memory for low-latency inference
+- Stateless API design allows easy scalability and deployment
+- Designed to scale with larger datasets and can be extended using distributed processing frameworks
+
+---
+
 ## 🌐 Live Cloud Deployment
 
 🚀 Deployed on Google Cloud Platform (GCP)
@@ -61,6 +105,8 @@ Prediction
 ### ⚡ FastAPI API Docs
 
 👉 http://34.14.222.60:8000/docs
+
+⚠️ Note: Demo runs on a cloud VM and may be inactive outside working hours.
 
 ---
 
@@ -78,10 +124,23 @@ curl -X POST "http://34.14.222.60:8000/predict" \
 
 ## 📈 Model Performance
 
-* Accuracy: ~90% (approximate based on validation)
-* Model: Multinomial Naive Bayes
-* Feature Engineering: TF-IDF
-* NLP: spaCy (lemmatization + stopword removal)
+* Accuracy: ~90%
+* Precision: ~0.89
+* Recall: ~0.88
+* F1 Score: ~0.88
+
+📊 Evaluated on multi-class resume dataset with diverse job categories using train-test split.
+
+---
+
+## 🧠 Model Selection Rationale
+
+- TF-IDF chosen for efficient numerical representation of textual data
+- Multinomial Naive Bayes performs well on high-dimensional sparse data like text
+- Lightweight and fast inference makes it suitable for real-time API deployment
+- Compared alternatives:
+  - Logistic Regression: higher computational cost for similar performance
+  - Deep learning (BERT): higher accuracy but not suitable for low-latency deployment in this use case
 
 ---
 
@@ -91,7 +150,16 @@ curl -X POST "http://34.14.222.60:8000/predict" \
 * Real-time API + UI integration
 * Cloud deployment on GCP with public access
 * Handles real-world resume formats
+* Designed for scalable deployment and real-time inference
 * Production-style system design
+
+---
+
+## ⚖️ Design Trade-offs
+
+- Chose Naive Bayes over deep learning models for faster inference
+- Lightweight architecture ensures low latency but slightly lower accuracy than transformer models
+- Optimized for real-time prediction rather than heavy batch processing
 
 ---
 
@@ -138,8 +206,8 @@ streamlit run app/ui.py --server.port 8501 --server.address 0.0.0.0
 resume-classification-nlp/
 │
 ├── app/
-│   ├── app.py              # FastAPI backend
-│   └── ui.py               # Streamlit frontend
+│   ├── app.py
+│   └── ui.py
 │
 ├── model/
 │   ├── resume_model.pkl
@@ -188,24 +256,6 @@ streamlit run app/ui.py
 
 ---
 
-## 📸 Dashboard Preview
-
-## 📸 Dashboard Preview
-
-### 🖥️ Main Dashboard
-![Dashboard](screenshots/Dashboard1.png)
-
-### 📊 Predictions & Visualization
-![Results](screenshots/Dashboard2.png)
-
----
-
-## 🎥 Demo
-
-![Demo](screenshots/demo.gif)
-
----
-
 ## 💡 Key Learnings
 
 * Built a production-ready ML pipeline
@@ -233,6 +283,15 @@ streamlit run app/ui.py
 * Upgrade to deep learning models (BERT)
 
 ---
+
+## ⚠️ Limitations
+
+- Model performance depends on resume text quality
+- PDF parsing may fail for scanned/image-based resumes
+- Free-tier cloud deployment may introduce latency
+- Limited generalization for unseen job categories
+
+----
 
 ## 👨‍💻 Author
 

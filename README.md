@@ -1,8 +1,20 @@
- 📄 AI Resume Classification System (NLP + Cloud Deployment)
+# 📄 AI Resume Classification System (NLP | FastAPI | Streamlit | GCP Deployment)
 
-🚀 **Live Production Demo:** http://34.14.222.60:8501
+🚀 Production-ready NLP system that classifies resumes into job roles using machine learning with real-time inference deployed on cloud.
 
-🎯 Automatically classifies resumes into job roles with real-time predictions via API and an interactive dashboard.
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-API-green)
+![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red)
+![GCP](https://img.shields.io/badge/Cloud-GCP-orange)
+
+---
+
+🚀 **Live App:** http://34.131.252.227:8501
+
+⚡ **API Docs:** http://34.131.252.227:8000/docs
+
+🎯 End-to-end ML system:
+**Data → NLP Processing → Model → API → Dashboard → Cloud Deployment**
 
 ---
 
@@ -14,30 +26,51 @@
 
 ## 📸 Dashboard Preview
 
-### 🖥️ Main Dashboard
+### 🖥️ Step 1: Upload Resume Files
 
 ![Dashboard](screenshots/Dashboard1.png)
 
-### 📊 Predictions & Visualization
+### 📊 Step 2: View Predictions & Visualization
 
 ![Results](screenshots/Dashboard2.png)
 
 ---
 
+## 🏆 Why This Project Stands Out
+
+✔ Real-time deployed NLP system (not just notebook)
+
+✔ Multi-format resume processing (PDF, DOCX, TXT)
+
+✔ Cloud-hosted application with public access
+
+✔ API + UI integration
+
+✔ Production-style ML pipeline
+
+---
+
 ## 🔥 Project Highlights
 
-✔ Multi-format resume support (PDF, DOCX, TXT)
-✔ Automated text extraction pipeline
+✔ Automated resume parsing and text extraction
+
 ✔ NLP preprocessing using spaCy (lemmatization + stopword removal)
+
 ✔ TF-IDF feature engineering
-✔ Machine Learning classification (Multinomial Naive Bayes)
+
+✔ Machine Learning classification using Multinomial Naive Bayes
+
 ✔ REST API using FastAPI
+
 ✔ Interactive dashboard using Streamlit
+
 ✔ Batch prediction support
-✔ Data visualization (prediction distribution)
+
+✔ Visualization of prediction distribution
+
 ✔ Download results as CSV
-✔ Deployed on Google Cloud VM with static IP
-✔ Production-ready ML system with real-time inference
+
+✔ Deployed on GCP VM with static external IP
 
 ---
 
@@ -45,23 +78,33 @@
 
 Recruiters receive hundreds of resumes for each job role, making manual screening inefficient and time-consuming.
 
-👉 This system automates resume classification using NLP to enable faster and scalable hiring workflows.
+👉 Traditional manual filtering is slow and error-prone
 
-💼 **Impact:** Reduces manual resume screening time by automating candidate categorization at scale.
+👉 This system automates resume classification using NLP to enable faster and scalable hiring workflows
 
-💡 This project simulates a real-world HR automation system used in recruitment pipelines.
+💼 **Impact:** Reduces manual resume screening time and improves hiring efficiency
+
+📈 Enables scalable and automated candidate filtering for recruitment pipelines
 
 ---
 
 ## 📊 Dataset
 
-- Source: Public resume dataset (Kaggle)
-- Number of samples: 79+ resumes (used for demonstration; scalable to larger datasets)
-- Number of classes: 04 job categories (peoplesoft , react developer , sql developer , workday)
-- Preprocessing:
-  - Removed noise (URLs, symbols)
-  - Lemmatization using spaCy
-- Data imbalance handled using standard train-test split
+* Source: Public dataset (Kaggle)
+* Samples: 79+ resumes (demo dataset; scalable to large datasets)
+* Classes: 4 job roles
+
+  * Peoplesoft
+  * React Developer
+  * SQL Developer
+  * Workday
+
+### 🔧 Preprocessing
+
+* Removed noise (URLs, symbols)
+* Lemmatization using spaCy
+* Stopword removal
+* Text normalization
 
 ---
 
@@ -85,12 +128,29 @@ Prediction
 
 ## 🏗️ Architecture Details
 
-- FastAPI handles real-time prediction requests
-- Streamlit acts as the frontend interface for user interaction
-- NLP preprocessing pipeline cleans and transforms resume text
-- Model and vectorizer are loaded into memory for low-latency inference
-- Stateless API design allows easy scalability and deployment
-- Designed to scale with larger datasets and can be extended using distributed processing frameworks
+* FastAPI handles real-time prediction requests
+* Streamlit provides interactive frontend interface
+* NLP pipeline processes raw resume text
+* TF-IDF converts text into numerical features
+* Model performs classification
+* Stateless API enables scalability
+
+---
+
+## 📈 Model Performance
+
+### 📊 Evaluation Metrics
+
+| Metric        | Value | Interpretation                     |
+| ------------- | ----- | ---------------------------------- |
+| **Accuracy**  | ~90%  | Overall classification performance |
+| **Precision** | ~0.89 | Correct positive predictions       |
+| **Recall**    | ~0.88 | Coverage of actual positives       |
+| **F1 Score**  | ~0.88 | Balance between precision & recall |
+
+---
+
+📌 **Key Highlight:** Achieves strong performance with lightweight ML model suitable for real-time deployment
 
 ---
 
@@ -98,68 +158,55 @@ Prediction
 
 🚀 Deployed on Google Cloud Platform (GCP)
 
-### 🔗 Streamlit Dashboard
+### 📊 Streamlit Dashboard
 
-👉 http://34.14.222.60:8501
+👉 http://34.131.252.227:8501
 
 ### ⚡ FastAPI API Docs
 
-👉 http://34.14.222.60:8000/docs
+👉 http://34.131.252.227:8000/docs
 
-⚠️ Note: Demo runs on a cloud VM and may be inactive outside working hours.
+⚠️ Note: VM may be stopped to optimize cost
 
 ---
 
 ## 🔌 API Example
 
 ```bash
-curl -X POST "http://34.14.222.60:8000/predict" \
+curl -X POST "http://34.131.252.227:8000/predict" \
 -H "Content-Type: application/json" \
 -d '{"resume": "Python developer with machine learning experience"}'
 ```
-
-👉 Returns predicted job category from the model.
-
----
-
-## 📈 Model Performance
-
-* Accuracy: ~90%
-* Precision: ~0.89
-* Recall: ~0.88
-* F1 Score: ~0.88
-
-📊 Evaluated on multi-class resume dataset with diverse job categories using train-test split.
 
 ---
 
 ## 🧠 Model Selection Rationale
 
-- TF-IDF chosen for efficient numerical representation of textual data
-- Multinomial Naive Bayes performs well on high-dimensional sparse data like text
-- Lightweight and fast inference makes it suitable for real-time API deployment
-- Compared alternatives:
-  - Logistic Regression: higher computational cost for similar performance
-  - Deep learning (BERT): higher accuracy but not suitable for low-latency deployment in this use case
+* TF-IDF efficiently represents textual data
+* Multinomial Naive Bayes performs well on high-dimensional text
+* Lightweight and fast → ideal for real-time APIs
 
----
+### Compared Alternatives
 
-## 🚀 Why This Project Stands Out
-
-* End-to-end ML pipeline (data → preprocessing → model → deployment)
-* Real-time API + UI integration
-* Cloud deployment on GCP with public access
-* Handles real-world resume formats
-* Designed for scalable deployment and real-time inference
-* Production-style system design
+* Logistic Regression → similar performance, higher compute
+* Deep Learning (BERT) → better accuracy but higher latency
 
 ---
 
 ## ⚖️ Design Trade-offs
 
-- Chose Naive Bayes over deep learning models for faster inference
-- Lightweight architecture ensures low latency but slightly lower accuracy than transformer models
-- Optimized for real-time prediction rather than heavy batch processing
+* Chose Naive Bayes for speed over deep learning accuracy
+* Optimized for real-time prediction rather than heavy computation
+* Balanced performance and deployment simplicity
+
+---
+
+## ⚠️ Limitations
+
+* Limited dataset size (demo dataset)
+* Model performance depends on resume quality
+* PDF parsing may fail for scanned resumes
+* Limited generalization for unseen job roles
 
 ---
 
@@ -182,8 +229,6 @@ uvicorn app.app:app --host 0.0.0.0 --port 8000
 
 streamlit run app/ui.py --server.port 8501 --server.address 0.0.0.0
 ```
-
-⚠️ Note: If the app is not accessible, the VM instance may be stopped to save cost.
 
 ---
 
@@ -250,19 +295,19 @@ streamlit run app/ui.py
 ## 📊 Features
 
 * Upload multiple resumes
-* View predictions in tabular format
-* Visualize prediction distribution
+* View predictions in table format
+* Visualize distribution
 * Download results as CSV
 
 ---
 
 ## 💡 Key Learnings
 
-* Built a production-ready ML pipeline
-* Applied NLP preprocessing for real-world text
-* Integrated FastAPI with Streamlit
-* Deployed ML system on cloud infrastructure
-* Managed real-world deployment challenges
+* Built production-ready NLP pipeline
+* Applied real-world text preprocessing
+* Integrated API + UI
+* Deployed ML system on cloud
+* Solved real deployment issues
 
 ---
 
@@ -277,21 +322,12 @@ streamlit run app/ui.py
 
 ## 🔮 Future Improvements
 
-* Add prediction confidence scores
-* Dockerize the application
+* Add confidence scores
+* Integrate deep learning (BERT)
+* Dockerize application
 * Improve UI/UX
-* Upgrade to deep learning models (BERT)
 
 ---
-
-## ⚠️ Limitations
-
-- Model performance depends on resume text quality
-- PDF parsing may fail for scanned/image-based resumes
-- Free-tier cloud deployment may introduce latency
-- Limited generalization for unseen job categories
-
-----
 
 ## 👨‍💻 Author
 

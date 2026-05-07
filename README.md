@@ -1,10 +1,11 @@
-# 📄 AI Resume Classification System (NLP | FastAPI | Streamlit | GCP Deployment)
+# 📄 AI Resume Classification System (NLP | FastAPI | Streamlit | Docker | GCP Deployment)
 
 🚀 Production-ready NLP system that classifies resumes into job roles using machine learning with real-time inference deployed on cloud.
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-API-green)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red)
+![Docker](https://img.shields.io/badge/Docker-Containerization-blue)
 ![GCP](https://img.shields.io/badge/Cloud-GCP-orange)
 
 ---
@@ -14,7 +15,7 @@
 ⚡ **API Docs:** http://34.131.252.227:8000/docs
 
 🎯 End-to-end ML system:
-**Data → NLP Processing → Model → API → Dashboard → Cloud Deployment**
+**Data → NLP Processing → Model → API → Dashboard → Docker → Cloud Deployment**
 
 ---
 
@@ -48,6 +49,10 @@
 
 ✔ Production-style ML pipeline
 
+✔ Dockerized production-ready deployment
+
+✔ Containerized API serving architecture
+
 ---
 
 ## 🔥 Project Highlights
@@ -69,6 +74,8 @@
 ✔ Visualization of prediction distribution
 
 ✔ Download results as CSV
+
+✔ Dockerized deployment workflow
 
 ✔ Deployed on GCP VM with static external IP
 
@@ -110,7 +117,7 @@ Recruiters receive hundreds of resumes for each job role, making manual screenin
 
 ## 🏗️ System Architecture
 
-```
+```text
 User
  ↓
 Streamlit UI
@@ -126,6 +133,20 @@ Prediction
 
 ---
 
+## 🏗️ Dockerized Architecture
+
+```text
+Docker Container
+│
+├── FastAPI Backend
+├── NLP Processing Pipeline
+├── Trained ML Model
+├── spaCy Language Model
+└── REST API Service
+```
+
+---
+
 ## 🏗️ Architecture Details
 
 * FastAPI handles real-time prediction requests
@@ -134,6 +155,7 @@ Prediction
 * TF-IDF converts text into numerical features
 * Model performs classification
 * Stateless API enables scalability
+* Docker ensures environment consistency and portability
 
 ---
 
@@ -167,6 +189,124 @@ Prediction
 👉 http://34.131.252.227:8000/docs
 
 ⚠️ Note: VM may be stopped to optimize cost
+
+---
+
+## 🐳 Dockerized Deployment
+
+This project has been fully containerized using Docker for reproducible and production-ready deployment.
+
+---
+
+## 🚀 Why Docker?
+
+✔ Ensures consistent environment across systems
+
+✔ Eliminates dependency conflicts
+
+✔ Simplifies deployment workflow
+
+✔ Supports scalable cloud-native deployment
+
+✔ Enables isolated execution environment
+
+✔ Improves portability across machines and servers
+
+---
+
+## 📦 Dockerfile Highlights
+
+✔ Lightweight Python 3.11 slim image
+
+✔ Optimized build context using `.dockerignore`
+
+✔ Separate model and app copy strategy
+
+✔ Reduced unnecessary file transfer
+
+✔ Production-ready FastAPI startup command
+
+✔ Optimized containerized deployment workflow
+
+---
+
+## 📂 Docker Files Added
+
+```text
+Dockerfile
+.dockerignore
+```
+
+---
+
+## ⚙️ Build Docker Image
+
+```bash
+docker build -t resume-api .
+```
+
+---
+
+## ▶️ Run Docker Container
+
+```bash
+docker run -p 8000:8000 resume-api
+```
+
+---
+
+## 🌐 Access Dockerized API
+
+### FastAPI Swagger Docs
+
+```text
+http://localhost:8000/docs
+```
+
+---
+
+## 🧠 Docker Optimization Techniques Used
+
+✔ `.dockerignore` to exclude unnecessary files
+
+✔ Avoided large notebook/data transfer
+
+✔ Selective COPY commands instead of `COPY . .`
+
+✔ Lightweight base image (`python:3.11-slim`)
+
+✔ Cached dependency installation layers
+
+✔ Reduced Docker build context size
+
+---
+
+## 📊 Docker Benefits for ML Systems
+
+* Faster deployment
+* Reproducible environments
+* Easier scaling
+* Simplified CI/CD integration
+* Better portability across cloud platforms
+* Production-grade deployment workflow
+
+---
+
+## 🔥 Production Engineering Concepts Demonstrated
+
+✔ Containerization
+
+✔ REST API Deployment
+
+✔ Dependency Isolation
+
+✔ Build Context Optimization
+
+✔ FastAPI Production Serving
+
+✔ Cloud-Ready Architecture
+
+✔ Dockerized ML Deployment
 
 ---
 
@@ -217,6 +357,7 @@ curl -X POST "http://34.131.252.227:8000/predict" \
 * Backend: FastAPI (Uvicorn)
 * Frontend: Streamlit
 * Networking: Static External IP
+* Containerization: Docker
 
 ---
 
@@ -232,6 +373,20 @@ streamlit run app/ui.py --server.port 8501 --server.address 0.0.0.0
 
 ---
 
+## 🐳 Run Using Docker
+
+```bash
+git clone https://github.com/Kiran-id10/resume-classification-nlp.git
+
+cd resume-classification-nlp
+
+docker build -t resume-api .
+
+docker run -p 8000:8000 resume-api
+```
+
+---
+
 ## 🧰 Tech Stack
 
 * Python
@@ -239,6 +394,7 @@ streamlit run app/ui.py --server.port 8501 --server.address 0.0.0.0
 * spaCy
 * FastAPI
 * Streamlit
+* Docker
 * PyPDF2
 * python-docx
 * Matplotlib
@@ -247,7 +403,7 @@ streamlit run app/ui.py --server.port 8501 --server.address 0.0.0.0
 
 ## 📂 Project Structure
 
-```
+```text
 resume-classification-nlp/
 │
 ├── app/
@@ -261,6 +417,8 @@ resume-classification-nlp/
 ├── data/
 ├── screenshots/
 │
+├── Dockerfile
+├── .dockerignore
 ├── requirements.txt
 ├── README.md
 └── .gitignore
@@ -272,12 +430,15 @@ resume-classification-nlp/
 
 ```bash
 git clone https://github.com/Kiran-id10/resume-classification-nlp.git
+
 cd resume-classification-nlp
 
 python3 -m venv env
+
 source env/bin/activate
 
 pip install -r requirements.txt
+
 python3 -m spacy download en_core_web_sm
 ```
 
@@ -287,6 +448,7 @@ python3 -m spacy download en_core_web_sm
 
 ```bash
 uvicorn app.app:app --reload
+
 streamlit run app/ui.py
 ```
 
@@ -298,6 +460,9 @@ streamlit run app/ui.py
 * View predictions in table format
 * Visualize distribution
 * Download results as CSV
+* REST API support
+* Dockerized deployment
+* Production-ready architecture
 
 ---
 
@@ -308,6 +473,9 @@ streamlit run app/ui.py
 * Integrated API + UI
 * Deployed ML system on cloud
 * Solved real deployment issues
+* Learned Docker containerization
+* Optimized Docker build context
+* Implemented production deployment workflow
 
 ---
 
@@ -324,7 +492,9 @@ streamlit run app/ui.py
 
 * Add confidence scores
 * Integrate deep learning (BERT)
-* Dockerize application
+* Add Docker Compose for multi-container deployment
+* Kubernetes deployment
+* CI/CD pipeline integration
 * Improve UI/UX
 
 ---
@@ -334,6 +504,7 @@ streamlit run app/ui.py
 **Kiran Kumar S R**
 
 🎓 Data Science & AI Engineer
+
 💼 Actively seeking Data Science / ML opportunities
 
 ---
@@ -341,4 +512,3 @@ streamlit run app/ui.py
 ## ⭐ Support
 
 If you found this project useful, give it a ⭐ on GitHub!
-

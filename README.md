@@ -10,16 +10,31 @@
 
 ---
 
-🚀 **Live App:** http://34.131.252.227:8501
+🎬 **Deployment Demo Available Below**
 
-⚡ **API Docs:** http://34.131.252.227:8000/docs
+⚠️ **Note:** The original cloud deployment was hosted on Google Cloud Platform (GCP). The VM instance may currently be offline to optimize hosting costs.
+
+🎥 The demo GIF below was recorded from the deployed cloud application and showcases the complete end-to-end workflow, including:
+
+✔ Resume upload
+
+✔ Real-time predictions
+
+✔ Dashboard visualization
+
+✔ API integration
+
+✔ Production deployment workflow
 
 🎯 End-to-end ML system:
+
 **Data → NLP Processing → Model → API → Dashboard → Docker → Cloud Deployment**
 
 ---
 
 ## 🎥 Live Demo (Quick Preview)
+
+> The following demo was recorded from the deployed cloud application and demonstrates the complete workflow.
 
 ![Demo](screenshots/demo.gif)
 
@@ -163,12 +178,12 @@ Docker Container
 
 ### 📊 Evaluation Metrics
 
-| Metric        | Value | Interpretation                     |
-| ------------- | ----- | ---------------------------------- |
-| **Accuracy**  | ~90%  | Overall classification performance |
-| **Precision** | ~0.89 | Correct positive predictions       |
-| **Recall**    | ~0.88 | Coverage of actual positives       |
-| **F1 Score**  | ~0.88 | Balance between precision & recall |
+| Metric | Value | Interpretation |
+|----------|--------|--------|
+| **Accuracy** | ~90% | Overall classification performance |
+| **Precision** | ~0.89 | Correct positive predictions |
+| **Recall** | ~0.88 | Coverage of actual positives |
+| **F1 Score** | ~0.88 | Balance between precision & recall |
 
 ---
 
@@ -176,19 +191,13 @@ Docker Container
 
 ---
 
-## 🌐 Live Cloud Deployment
+## 🌐 Cloud Deployment
 
-🚀 Deployed on Google Cloud Platform (GCP)
+🚀 Originally deployed on Google Cloud Platform (GCP)
 
-### 📊 Streamlit Dashboard
+⚠️ **Deployment Status:** The cloud instance may currently be offline to optimize hosting costs.
 
-👉 http://34.131.252.227:8501
-
-### ⚡ FastAPI API Docs
-
-👉 http://34.131.252.227:8000/docs
-
-⚠️ Note: VM may be stopped to optimize cost
+🎬 **Deployment Walkthrough:** Please refer to the demo GIF above, which was recorded from the deployed application and demonstrates the complete end-to-end workflow.
 
 ---
 
@@ -307,16 +316,6 @@ http://localhost:8000/docs
 ✔ Cloud-Ready Architecture
 
 ✔ Dockerized ML Deployment
-
----
-
-## 🔌 API Example
-
-```bash
-curl -X POST "http://34.131.252.227:8000/predict" \
--H "Content-Type: application/json" \
--d '{"resume": "Python developer with machine learning experience"}'
-```
 
 ---
 
